@@ -59,11 +59,7 @@ const ViewUserprofile = ({ user }) => {
           </tr>
           <tr>
             <td>ROLE</td>
-            <td>
-              {user.roles.map((role) => {
-                return <div key={role.id}>{role.name}</div>;
-              })}
-            </td>
+            <td>{user.role}</td>
           </tr>
         </tbody>
       </Table>

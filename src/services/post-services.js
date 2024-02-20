@@ -3,7 +3,7 @@ import { myAxios, privateAxios } from "./helper";
 //create post function
 export const createPost = (postData) => {
   return privateAxios
-    .post(`/api/v1/posts/`, postData, { withCredentials: true })
+    .post(`/posts/`, postData)
     .then((response) => response.data);
 };
 
@@ -47,8 +47,16 @@ export const loadPostCategoryWise = (categoryId) => {
 };
 //
 export const loadPostUserWise = (userId) => {
-  return privateAxios.get("/posts/").then((response) => response.data);
+  return privateAxios
+    .get(`/posts/user/${userId}`)
+    .then((response) => response.data);
 };
+export const loadPostUserWiseByname = (username, page) => {
+  return privateAxios
+    .get(`/posts/show-posts/${page}`, username)
+    .then((response) => response.data);
+};
+
 export const loadPostPostIdWise = (postId) => {
   return privateAxios.get(`/posts/${postId}`).then((response) => response.data);
 };

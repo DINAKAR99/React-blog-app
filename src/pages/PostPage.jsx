@@ -35,6 +35,10 @@ const PostPage = () => {
         content: "goodcomments",
       },
     ],
+    user: {
+      id: 0,
+      name: "ss",
+    },
   });
 
   const [comment, setComment] = useState({
@@ -103,7 +107,7 @@ const PostPage = () => {
               {postt && (
                 <CardBody>
                   <CardText>
-                    {/* Posted By<b>{postt.user.name}</b> on{" "} */}
+                    Posted By &nbsp;<b>{postt.user.name}</b> on{" "}
                     <b>{postt.addedDate}</b>
                   </CardText>
                   <CardText>

@@ -5,15 +5,17 @@ import { useParams } from "react-router-dom";
 import ViewUserprofile from "../../components/ViewUseProfile";
 import { getUser } from "../../services/user-services";
 import { Row, Col, Card, CardBody, Container, Table } from "reactstrap";
+import { getCurrentUserDetail } from "../../auth";
 function ProfileInfo() {
   const object = useContext(userContext);
-  const { userId } = useParams();
+  // const { userId } = useParams();
   const [user, setUser] = useState(null);
+  const user1 = getCurrentUserDetail();
 
   useEffect(() => {
-    getUser(userId).then((data) => {
+    getUser(user1.id).then((data) => {
       console.log(data);
-      setUser({ ...data });
+      setUser(data);
     });
   }, []);
 
@@ -58,11 +60,7 @@ function ProfileInfo() {
                   </tr>
                   <tr>
                     <td>ROLE</td>
-                    <td>
-                      {user.roles.map((role) => {
-                        return <div key={role.id}>{role.name}</div>;
-                      })}
-                    </td>
+                    <td>{user.role}</td>
                   </tr>
                 </tbody>
               </Table>

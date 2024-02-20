@@ -80,7 +80,7 @@ const Login = () => {
                 <Form onSubmit={handleFormSubmit}>
                   {/*Email field*/}
                   <FormGroup>
-                    <label htmlFor="email">Enter Email </label>
+                    <label htmlFor="email">Enter Name </label>
                     <Input
                       type="text"
                       id="email"

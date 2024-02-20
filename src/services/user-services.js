@@ -1,6 +1,8 @@
-import { myAxios } from "./helper";
+import { myAxios, privateAxios } from "./helper";
 export const signUp = (user) => {
-  return myAxios.post("/user/register", user).then((response) => response.data);
+  return myAxios
+    .post("/users/register", user)
+    .then((response) => response.data);
 };
 
 export const loginUser = (loginDetail) => {
@@ -9,5 +11,5 @@ export const loginUser = (loginDetail) => {
     .then((response) => response.data);
 };
 export const getUser = (userId) => {
-  return myAxios.get(`/users/${userId}`).then((response) => response.data);
+  return privateAxios.get(`/users/${userId}`).then((response) => response.data);
 };

@@ -4,15 +4,28 @@ import { Container } from "reactstrap";
 import AddPost from "../../components/AddPost";
 import NewFeed from "../../components/NewFeed";
 import { getCurrentUserDetail } from "../../auth";
-import { loadPostUserWise } from "../../services/post-services";
+import {
+  loadPostUserWise,
+  loadPostUserWiseByname,
+} from "../../services/post-services";
 import Post from "../../components/Post";
 import { deletePostService } from "../../services/post-services";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Pages from "./Pages";
 
 const Userdashboard = () => {
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage, setPostsPerPage] = useState(2);
+
+  const lastPostIndex = postsPerPage * currentPage;
+  const FirstPostIndex = lastPostIndex - postsPerPage;
+
+  const currentPosts = posts.slice(FirstPostIndex, lastPostIndex);
+
   useEffect(() => {
     console.log(getCurrentUserDetail());
     setUser(getCurrentUserDetail());
@@ -20,10 +33,11 @@ const Userdashboard = () => {
   }, []);
 
   function loadPostData() {
+    // loadPostUserWiseByname(getCurrentUserDetail().name, 1)
     loadPostUserWise(getCurrentUserDetail().id)
       .then((data) => {
         console.log(data);
-        setPosts([...data]);
+        setPosts(data);
       })
       .catch((error) => {
         console.log(error);
@@ -51,9 +65,15 @@ const Userdashboard = () => {
       <Container>
         <AddPost />
         <h1 className="my-3">Posts Count : ({posts.length})</h1>
-        {posts.map((post, index) => {
+        {currentPosts.map((post, index) => {
           return <Post post={post} key={index} deletePost={deletePost} />;
         })}
+        <Pages
+          TotalPages={posts.length}
+          postsPerPage={postsPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </Container>
     </Base>
   );

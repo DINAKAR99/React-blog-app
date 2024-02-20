@@ -15,12 +15,14 @@ import Base from "../components/base";
 import { useEffect, useState } from "react";
 import { signUp } from "../services/user-services";
 import { toast } from "react-toastify";
+
 const Singup = () => {
   const [data, setData] = useState({
     name: "",
     email: "",
     password: "",
     about: "",
+    role: "",
   });
   /////////////
   useEffect(() => {
@@ -41,6 +43,7 @@ const Singup = () => {
       email: "",
       password: "",
       about: "",
+      role: "",
     });
   };
   const submitForm = (event) => {
@@ -61,6 +64,7 @@ const Singup = () => {
           email: " ",
           password: " ",
           about: " ",
+          role: "",
         });
       })
       .catch((error) => {
@@ -151,6 +155,25 @@ const Singup = () => {
                       {error.errors?.response?.data?.about ? true : false}
                     </FormFeedback>
                   </FormGroup>
+
+                  <FormGroup>
+                    <label htmlFor="roles">ROLE : &nbsp; </label>
+                    <Input
+                      type="radio"
+                      name="role"
+                      onChange={(e) => handleChange(e, "role")}
+                      value="ROLE_USER"
+                    />
+                    USER &nbsp;
+                    <Input
+                      type="radio"
+                      name="role"
+                      onChange={(e) => handleChange(e, "about")}
+                      value="ROLE_ADMIN"
+                    />
+                    ADMIN
+                  </FormGroup>
+
                   <Container className="text-center">
                     <Button outline color="light">
                       Register

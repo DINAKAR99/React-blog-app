@@ -1,3 +1,4 @@
+import AllPosts from "../components/AllPosts";
 import CategorySideMenu from "../components/CategorySideMenu";
 import CustomNavbar from "../components/CustomNavbar";
 import NewFeed from "../components/NewFeed";
@@ -7,17 +8,17 @@ import { Container, Row, Col } from "reactstrap";
 const Home = () => {
   return (
     <Base>
+      <CustomNavbar />
       <Container className="mt-3">
         <Row>
           <Col md={2} className="pt-5">
             <CategorySideMenu />
           </Col>
-          <Col md={3}>
-            <NewFeed />
+          <Col md={8}>
+            <AllPosts />
           </Col>
         </Row>
       </Container>
-      <CustomNavbar />
     </Base>
   );
 };
