@@ -11,12 +11,13 @@ const Home = () => {
       <CustomNavbar />
       <Container className="mt-3">
         <Row>
+          <h1 className="text-center text-capitalize bg-danger-subtle p-5">
+            hello welcome to home page
+          </h1>
           <Col md={2} className="pt-5">
-            <CategorySideMenu />
+            {/* <CategorySideMenu /> */}
           </Col>
-          <Col md={8}>
-            <AllPosts />
-          </Col>
+          <Col md={8}>{/* <AllPosts /> */}</Col>
         </Row>
       </Container>
     </Base>

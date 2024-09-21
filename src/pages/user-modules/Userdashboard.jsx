@@ -62,7 +62,7 @@ const Userdashboard = () => {
   };
   return (
     <Base>
-      <Container>
+      <Container className="">
         <AddPost />
         <h1 className="my-3">Posts Count : ({posts.length})</h1>
         {currentPosts.map((post, index) => {

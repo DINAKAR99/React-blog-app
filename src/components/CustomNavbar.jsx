@@ -12,7 +12,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText,
 } from "reactstrap";
 import { doLogout, getCurrentUserDetail, isloggedIn } from "../auth";
 import { userContext } from "../context/userContext";
